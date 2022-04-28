@@ -68,11 +68,13 @@
             </em><a href='/?authors={{$post->author->username}}' target='_blank' title='Sora Blogging Tips'>{{$post->author->name}}</a></span>
             <time class='post-date published' datetime='2018-06-27T15:01:00-07:00'><em>-&#160;&#160;
             </em>{{$post->created_at->diffForHumans()}}</time><em>-&#160;&#160;</em>{{$post->post_view}}
+           
         </div>
     </div>
     <div id='ad-top'></div> 
     <div class='post-body post-content'>
             <div style="text-align: center;"><br /></div>{!!$post->description!!}</div>
+            <img style="width: 100%" src="{{asset('storage/'. $post->image)}}" alt="">
         </div>
         <div id='ad-footer'></div>
         <div class='post-footer'>

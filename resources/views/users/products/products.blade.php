@@ -37,6 +37,8 @@
         @endforeach
     </div>
 </div>
+
+@if(Session::has('resent_products'))
 <div class="container">
     <div class="row">
         <div class="border text-center mt-5" style="margin: 0 auto; width:70%; background:#b4cbd7">
@@ -67,4 +69,5 @@
         @endforeach
     </div>
 </div>
+@endif
 @endsection

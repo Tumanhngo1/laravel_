@@ -56,8 +56,7 @@ class PostController extends Controller
         ]);
     }
     public function update(Post $post){
-        // dd('helleo');
-        $attribute = $this->validatePost();
+        $attribute = $this->validateForm();
         $attribute['user_id'] = request()->user_id;
         if($attribute['image'] ?? false){
             $attribute['image'] = request()->file('image')->store('thumbnails');
