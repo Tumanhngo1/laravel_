@@ -18,11 +18,11 @@ class PostController extends Controller
     public function show($slug){
         $post = Post::where('slug',$slug)->first();
         $post->increment('post_view');
-        $populars = Post::orderBy('post_view','DESC')->take(3)->get();
+      
 
         return view('users.home.post',[
             'post' => $post,
-            'populars' =>$populars,
+            'populars' => Post::orderByDesc('post_view')->take(3)->get()
      
         ]);
     }
