@@ -26,7 +26,7 @@ class PostController extends Controller
 
     public function index(){
         return view('admin.post.index',[
-            'posts' => Post::orderBy('updated_at','DESC')->paginate(3)
+            'posts' => Post::orderByDesc('updated_at')->paginate(3)
         ]);
     }
     public function create(){

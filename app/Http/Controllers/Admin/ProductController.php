@@ -24,7 +24,7 @@ class ProductController extends Controller
     }
     public function index(){
         return view('admin.products.index',[
-            'products' => Product::orderBy('created_at','DESC')->paginate(5)
+            'products' => Product::orderByDesc('created_at')->paginate(5)
         ]);
     }
     public function create(){

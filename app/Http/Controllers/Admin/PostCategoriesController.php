@@ -19,7 +19,7 @@ class PostCategoriesController extends Controller
 
     public function index(){
         return view('admin.categories.index',[
-            'categories' => PostCategory::orderBy('created_at','DESC')->paginate(20)
+            'categories' => PostCategory::orderByDesc('created_at')->paginate(20)
         ]);
     }
 
