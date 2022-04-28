@@ -35,7 +35,7 @@
                         </div>
                         <span class="review-no">41 reviews</span>
                     </div>
-                    <p class="product-description">{!!$product->description!!}</p>
+                    
                     <h4 class="price">current price: <span>{{number_format($product->price)}} VND</span></h4>
                     <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                     <h5 class="sizes">sizes:
@@ -54,37 +54,53 @@
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div>
                 </div>
+                <div class="border mt-4">
+                    <p class="product-description">{!!$product->description!!}</p>
+                </div>
             </div>
         </div>
     </div> 
 </div>
 <div class="container">
-    <div class="row">
-        <div>
-            <h3>San pham vua xem</h3>
-        </div>
-       
-        @foreach (Session::get('resent_products') as $item)
-        <div class="col-md-4">
-                <div class="card">
-                    <div class="img-container">
-                        <div class="d-flex justify-content-between align-items-center p-2 first"> <span class="percent">-15%</span> 
-                            <span class="wishlist"><i class="fa fa-heart"></i></span> </div> 
-                            <img src="{{asset('storage/'. $product->image)}}" class="img-fluid">
+  <div class="border mt-2">
+      @auth
+        <form method="post" action="/products/{{$product->slug}}/comments">
+            @csrf
+            <header class="flex items-center">
+                <h5 >{{ucfirst(auth()->user()->name)}}</h5>
+            </header>
+            <div class="form-group">
+                <textarea name="body" id="" class="form-control" cols="" rows="" required></textarea>
+            </div>
+            @error('body')
+            <span style="color: red">{{ $message }}</span>
+            @enderror
+            <div style="float: right">
+                <button type="submit" class="btn btn-success mt-3">send</button>
+            </div>
+        </form>
+      @endauth
+      @foreach ($product->productcoments as $comment)
+            <section>
+                <article class="flex">
+                    <div>
+                        <span class="font-bold">{{ucfirst($comment->author->name)}} :</span>
+                        <time class='post-date published' datetime='2018-06-27T20:23:00-07:00'>{{$comment->created_at->diffForHumans() }}</time>
                     </div>
-                    <div class="product-detail-container">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6 class="mb-0">{{$item->title}}</h6> <span class="text-danger font-weight-bold">{{$item->price}}</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <div class="ratings"> <i class="fa fa-star"></i> <span>4.5</span> </div>
-                            <div class="size"> <label class="radio"> <input type="radio" name="size2" value="small"> <span>S</span> </label> <label class="radio"> <input type="radio" name="size2" value="Medium" checked> <span>M</span> </label> <label class="radio"> <input type="radio" name="size2" value="Large"> <span>L</span> </label> </div>
-                        </div>
-                        <div class="mt-3"> <button class="btn btn-danger btn-block">Buy Now</button> </div>
+                    <div>
+                        <header>
+                    
+                        {{-- <p class="text-xs">{{$comment->created_at->diffForHumans()}}</p> --}}
+                        </header>
+                        <p>
+                            {{ $comment->body }}
+                        </p>
                     </div>
-                </div>
-        </div>
-        @endforeach
-    </div>
+                </article>
+            
+            </section>
+     @endforeach
+  </div>
 </div>
+
 @endsection

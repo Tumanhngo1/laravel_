@@ -38,7 +38,7 @@ class PostCategoriesController extends Controller
         ]);
     }
     public function update(PostCategory $category){
-        $attributes = $this->validateCategory();
+        $attributes = $this->validateForm();
         $attributes['slug'] = Str::slug(request()->name , '-');
         $category->update($attributes);
         return redirect('/admin/categories')->with('msg','Thêm Mới  Thành Công');

@@ -11,4 +11,20 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(ProductCategory::class);
     }
+    public function productcoments(){
+        return $this->hasMany(ProductComment::class);
+    }
+
+    public function scopeFilter($query, array $filters){
+        $query->when($filters['search'] ?? false, fn($query, $search)
+        =>$query->where(fn($query)=>
+                $query->where('title','like','%'.$search.'%')
+                ->orWhere('price','like','%'.$search.'%')
+            ));
+        
+        $query->when($filters['category'] ?? false, fn($query, $category)
+        =>$query->whereHas('category',fn($query)
+            =>$query->where('slug',$category)
+            ));
+    }
 }

@@ -103,7 +103,9 @@
     </div>
     <div class='about-author'>
     <div class='avatar-container'>
-    <span class='author-avatar' data-image='//2.bp.blogspot.com/-gpkPtHz0gBk/YXK0ULEF5AI/AAAAAAAAAAQ/cV2tPPMJXQsQcKqnO7-BYd1SIAKAWnGzwCK4BGAYYCw/s100-pf/Sora%2BBlogging%2BTips.jpg'></span>
+    <span class='author-avatar'
+     data-image='//2.bp.blogspot.com/-gpkPtHz0gBk/YXK0ULEF5AI/AAAAAAAAAAQ/cV2tPPMJXQsQcKqnO7-BYd1SIAK
+     AWnGzwCK4BGAYYCw/s100-pf/Sora%2BBlogging%2BTips.jpg'></span>
     </div>
     <h3 class='author-name'>
     <span>Posted by</span><a alt='Sora Blogging Tips' href='https://www.blogger.com/profile/10687789128527805451' target='_blank'>
@@ -122,14 +124,6 @@
     </div>
 </article>
 <div class='comments'>
-    {{-- <script type='text/javascript'>
-        var disqus_blogger_current_url = "https://amalia-templateify.blogspot.com/2018/06/lighted-environment-in-contrast-to-dark.html";
-        if (!disqus_blogger_current_url.length) {
-          disqus_blogger_current_url = "https://amalia-templateify.blogspot.com/2018/06/lighted-environment-in-contrast-to-dark.html";
-        }
-        var disqus_blogger_homepage_url = "https://amalia-templateify.blogspot.com/";
-        var disqus_blogger_canonical_homepage_url = "https://amalia-templateify.blogspot.com/";
-    </script> --}}
         <div class='title'>
         <h3>Post a Comment</h3>
     </div>
@@ -164,23 +158,23 @@
                     @endauth
                 </form>
                 @foreach ($post->comments as $comment)
-                <section>
-                    <article class="flex">
-                        <div>
-                            <img style="width:5%;margin-top:3px" src="https://i.pravatar.cc/100" alt="">
-                        </div>
-                        <div>
-                            <header>
-                                <h3 class="font-bold">{{$comment->author->name}}</h3>
-                            <p class="text-xs">{{$comment->created_at->diffForHumans()}}</p>
-                            </header>
-                            <p>
-                                {{ $comment->body }}
-                            </p>
-                        </div>
-                    </article>
-                   
-                  </section>
+                    <section>
+                        <article class="flex">
+                            <div>
+                                <img style="width:5%;margin-top:3px" src="https://i.pravatar.cc/100" alt="">
+                            </div>
+                            <div>
+                                <header>
+                                    <h3 class="font-bold">{{$comment->author->name}}</h3>
+                                <p class="text-xs">{{$comment->created_at->diffForHumans()}}</p>
+                                </header>
+                                <p>
+                                    {{ $comment->body }}
+                                </p>
+                            </div>
+                        </article>
+                    
+                    </section>
                 @endforeach
             </div>
         </div>

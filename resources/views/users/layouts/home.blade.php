@@ -48,7 +48,7 @@
 <li><a href='/' role='menuitem'>Home</a></li>
 
 @php
-  $categories = App\Models\PostCategory::all()    
+  $categories = App\Models\ProductCategory::all()    
 @endphp
 
 <li><a href='/products' role='menuitem'>products</a></li>

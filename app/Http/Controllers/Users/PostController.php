@@ -22,7 +22,8 @@ class PostController extends Controller
 
         return view('users.home.post',[
             'post' => $post,
-            'populars' =>$populars
+            'populars' =>$populars,
+     
         ]);
     }
 }
