@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
     public function create(){
         return view('admin.products.create',[
-            'categories'=> ProductCategory::all()
+            'categories'=> ProductCategory::all(),
         ]);
     }
     public function store(){

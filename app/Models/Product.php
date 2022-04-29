@@ -14,6 +14,13 @@ class Product extends Model
     public function productcoments(){
         return $this->hasMany(ProductComment::class);
     }
+    
+    public function colors(){
+        return $this->hasMany(Color::class);
+    }
+    public function sizes(){
+        return $this->hasMany(Size::class);
+    }
 
     public function scopeFilter($query, array $filters){
         $query->when($filters['search'] ?? false, fn($query, $search)

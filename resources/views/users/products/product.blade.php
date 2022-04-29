@@ -39,15 +39,35 @@
                     <h4 class="price">current price: <span>{{number_format($product->price)}} VND</span></h4>
                     <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                     <h5 class="sizes">sizes:
-                        <span class="size" data-toggle="tooltip" title="small">s</span>
+                        <select name="size" id="">
+                            @foreach($product->sizes as $size)
+                            <option value="{{$size->id}}">{{$size->size}}</option>
+                            @endforeach
+                        </select>
+                        
+                        {{-- <span class="size" data-toggle="tooltip" title="small">s</span>
                         <span class="size" data-toggle="tooltip" title="medium">m</span>
                         <span class="size" data-toggle="tooltip" title="large">l</span>
-                        <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+                        <span class="size" data-toggle="tooltip" title="xtra large">xl</span> --}}
                     </h5>
                     <h5 class="colors">colors:
-                        <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-                        <span class="color green"></span>
-                        <span class="color blue"></span>
+                        <div class="radio-item">
+                            <input type="radio" id="ritema" name="ritem" value="ropt1">
+                            <label for="ritema">Option 1</label>
+                        </div>
+                        
+                        <div class="radio-item">
+                            <input type="radio" id="ritemb" name="ritem" value="ropt2">
+                            <label for="ritemb">Option 2</label>
+                        </div>
+                        <div class="form-group">
+                            @foreach($product->colors as $color) 
+                            <input type="radio" class="form-control col-md-3" style="background: {{$color->color}}"  name="color{{$color->id}}" value="30">
+                            {{-- <span style="color:  {{$color->color}}">x</span> --}}
+                            @endforeach
+                           
+                        </div>
+                       
                     </h5>
                     <div class="action">
                         <button class="add-to-cart btn btn-default" type="button">add to cart</button>

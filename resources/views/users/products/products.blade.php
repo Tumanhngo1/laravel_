@@ -26,7 +26,16 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <div class="ratings"> <i class="fa fa-star"></i> <span>4.5</span> </div>
-                        <div class="size"> <label class="radio"> <input type="radio" name="size1" value="small"> <span>S</span> </label> <label class="radio"> <input type="radio" name="size1" value="Medium" checked> <span>M</span> </label> <label class="radio"> <input type="radio" name="size1" value="Large"> <span>L</span> </label> </div>
+                        <div class="">
+                             <label class="size">Size:</label> 
+                                 <select name="size" id="">
+                                    @foreach($product->sizes as $size)
+                                     <option value="{{$size->id}}">{{$size->size}}</option>
+                                     @endforeach
+                                 </select>
+   
+                            
+                        </div>
                     </div>
                     <div>
                     <a href="/products/{{$product->slug}}" class="btn btn-danger" style="color: #b4cbd7">Buy Now</a>

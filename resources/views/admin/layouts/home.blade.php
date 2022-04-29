@@ -191,6 +191,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
+          {{-- <li>
+            <p style="color: aliceblue; margin-left:10px">Attributes</p>
+            <ul>
+              <li class="nav-item">
+                <a href="/admin/attr" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Quản lý thuoc tinh san pham
+                   
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('attr.create') }}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Quản lý  thuoc tinh san pham
+                    
+                    <ul>
+                     
+                    </ul>
+                  </p>
+                 
+                </a>
+              </li>
+            </ul>
+          </li> --}}
           
           
         </ul>
@@ -236,10 +263,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script type="text/javascript">
-	
-
-
-
   var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
   tinymce.init({
@@ -304,26 +327,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   
   </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+  $.('#inputName').change(function(){
+    alert('ok');
+  })
+</script>
 
 
-
-
-<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+{{-- <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script>
   CKEDITOR.replace ('ckeditor',{
-    // filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
-      filebrowserBrowseUrl     : "{{ route('ckfinder_browser') }}",
-      filebrowserImageBrowseUrl: "{{ route('ckfinder_browser') }}?type=Images&token=123",
-      filebrowserFlashBrowseUrl: "{{ route('ckfinder_browser') }}?type=Flash&token=123", 
-      filebrowserUploadUrl     : "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files", 
-      filebrowserImageUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Images",
-      filebrowserFlashUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Flash",
+   
   });
-  </script>
-@include('ckfinder::setup')
+  </script> --}}
 
-  <script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
-  <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+
+
 
 
 <!-- jQuery -->
