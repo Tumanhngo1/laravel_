@@ -122,7 +122,7 @@
      @endforeach
   </div>
 </div>
-{{-- <div class="container">
+<div class="container">
     <div class="row">
         <div class="border text-center mt-5" style="margin: 0 auto; width:70%; background:#b4cbd7">
             <h3>San pham vua xem</h3>
@@ -151,6 +151,6 @@
         </div>
         @endforeach
     </div>
-</div> --}}
+</div>
 
 @endsection

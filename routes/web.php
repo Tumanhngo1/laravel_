@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\PostCommentController;
 use App\Http\Controllers\Users\ProductCommentController;
 use App\Http\Controllers\Users\ProductController as UsersProductController;
@@ -28,10 +29,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PostController::class,'index']);
 Route::get('users/{post}',[PostController::class,'show']);
 Route::post('users/{post:slug}/comments',[PostCommentController::class,'store']);
+
 //HOME/PRODCT
 Route::get('products',[UsersProductController::class,'index']);
 Route::get('products/{product}',[UsersProductController::class,'show']);
 Route::post('products/{product:slug}/comments',[ProductCommentController::class,'store']);
+
+//cart
+
+Route::get('carts/{cart}',[CartController::class,'show'])->name('addToCart');
+Route::get('show-carts',[CartController::class,'index'])->name('cart');
+Route::get('update-carts',[CartController::class,'update'])->name('update');
+Route::get('delete-carts',[CartController::class,'destroy'])->name('delete');
+
+
 
 
 
