@@ -55,7 +55,7 @@
     
 
 
-    <form action="{{route('payment')}}" method="POST">
+    {{-- <form action="{{route('payment')}}" method="POST">
         @csrf
         <div class="container">
             <div class="row">
@@ -83,15 +83,7 @@
                     </select>
 
                 </div>
-                @if(Session::has('cart'))
-                @foreach (Session::get('cart') as $id => $cart)     
-                <input type="hidden" name="title" value="{{$cart['name']}}">
-                <input type="hidden" name="price" id="" value="{{$cart['price']}}">
-                <input type="hidden" name="quantity" id="" value="{{request('quantity')}}">
-                <input type="hidden" name="total-cart" id="" value="{{$cart['price']*$cart['quantity']}}">
-                <input type="hidden" name="total" value="{{ $total }}">
-                @endforeach
-                @endif
+             
             </div>
             <div>
                 <button type="submit" style="float: right" class="btn btn-success mb-3">Dat mua</button>
@@ -99,7 +91,7 @@
 
         </div> 
 
-    </form>
+    </form> --}}
 
 
 
@@ -114,18 +106,18 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="view-render">
-
             </div>
               <div class="modal-body"> 
             <div class="modal-footer">
                 <div>
                     <a class="btn btn-success" style="color: white" href="{{route('cart')}}">di toi gio hang</a>
                 </div>
-                <button class="btn btn-info payment" >Thanh toan</button>
+                {{-- <button class="btn btn-info payment" >Thanh toan</button> --}}
+                <a href="/paymet-carts" class="btn btn-info" style="color: white">Thanh toan</a>
               </div>
               <div style="display: none" class="pay">
                 <hr>
-                @include('users.carts.payment')
+                {{-- @include('users.carts.payment') --}}
               </div>
             </div>
           </div>

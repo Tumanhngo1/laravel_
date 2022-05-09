@@ -46,20 +46,8 @@ Route::get('delete-carts',[CartController::class,'destroy'])->name('delete');
 
 
 //order
-Route::post('paymet-carts',[OrderController::class,'store'])->name('payment');
-
-
-//test
-Route::get('view', [ViewRenderController::class, 'view']);
-Route::post('view-render', [ViewRenderController::class, 'viewRender'])->name('view.render');
-
-
-
-
-
-
-
-
+Route::get('paymet-carts',[OrderController::class,'create']);
+Route::post('order-carts',[OrderController::class,'store'])->name('payment');
 
 
 
@@ -75,9 +63,7 @@ Route::middleware('can:admin')->group(function(){
     Route::resource('admin/categories',PostCategoriesController::class);
     Route::resource('admin/posts',AdminPostController::class);
     Route::patch('admin/posts/{post:slug}',[AdminPostController::class,'update']);
-
     Route::resource('admin/productcategories',ProductCategoryController::class);
-    
     Route::resource('admin/products',ProductController::class);
        
 

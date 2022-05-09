@@ -29,15 +29,8 @@ class CartController extends Controller
         }
         session()->put('cart',$cart);
     
-        // return response()->json([
-        //     'code' => 200,
-        // ],200);
-        // $cart= $cart[request()->id];
-        // $id = request()->id;
-//   dd(session()->get('cart'));
-        // return view('uses.carts.row');
         return  view('users.carts.viewRend')->render();
-        // return response()->json(array('success' => true, 'html'=>$viewRender));
+  
     }
 
     public function update(){
@@ -50,17 +43,10 @@ class CartController extends Controller
         elseif(request()->id && request()->quantity <= 0){
             $this->destroy();
         }
-        // dd( session()->get('cart'));
-        return view('users.carts.row')->render();
-
-
+        return view('users.carts.row');
     }
 
-    public function store(){
-        (request()->validate([
-            
-        ]));
-    }
+
 
     public function destroy(){
        if(request()->id){
