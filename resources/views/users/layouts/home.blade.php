@@ -81,6 +81,7 @@
   <a href="/login" class="ml-3 text-xs font-bold uppercase">login</a>  
   @endauth
 </li>
+<li> <a class="btn" href="{{route('cart')}}"><i class="fa-solid fa-cart-plus"></i></a></li>
 </ul>
 </div>
 </div>
@@ -138,10 +139,14 @@ Contact Form
 </div></div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{asset('/assets/js/main.js')}}"></script>
 <!-- Hosted Plugins -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'></script>
+
 <!-- Main Scripts -->
 <script type='text/javascript'>
   //<![CDATA[

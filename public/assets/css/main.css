@@ -3395,3 +3395,34 @@ img {
             transform: scale(1); } }
 
 /*# sourceMappingURL=style.css.map */
+
+.btn-qty{
+  float: left;
+  border-radius: 0;
+  color: #333;
+  background-color: #fff;
+  border: 1px #ebebeb solid;
+  height: 40px;
+  line-height: 39px;
+  width: 40px;
+  padding: 0;
+}
+.update-cart{
+  margin: 0 5px;
+  float: left;
+  border-radius: 0;
+  border: 1px #ebebeb solid;
+  height: 40px;
+  min-height: 40px;
+  width: 40px;
+  text-align: center;
+  
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#btn-qt{
+  display: flex;
+}

@@ -26,9 +26,10 @@ class ProductController extends Controller
             array_shift($recentPros);
         }
         $session->put('resent_products',$recentPros);
-
+        $carts = session()->get('cart');
         return view('users.products.product',[
-            'product' => $product
+            'product' => $product,
+            'carts' => $carts
         ]);
     }
 }

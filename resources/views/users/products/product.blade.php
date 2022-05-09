@@ -51,15 +51,7 @@
                         <span class="size" data-toggle="tooltip" title="xtra large">xl</span> --}}
                     </h5>
                     <h5 class="colors">colors:
-                        <div class="radio-item">
-                            <input type="radio" id="ritema" name="ritem" value="ropt1">
-                            <label for="ritema">Option 1</label>
-                        </div>
-                        
-                        <div class="radio-item">
-                            <input type="radio" id="ritemb" name="ritem" value="ropt2">
-                            <label for="ritemb">Option 2</label>
-                        </div>
+                       
                         <div class="form-group">
                             @foreach($product->colors as $color) 
                             <input type="radio" class="form-control col-md-3" style="background: {{$color->color}}"  name="color{{$color->id}}" value="30">
@@ -69,8 +61,8 @@
                         </div>
                        
                     </h5>
-                    <div class="action">
-                        <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                    {{-- <div class="action"> --}}
+                        <button class="btn btn-default add-to-cart " data="{{$product->id}}" data-id="{{ route('addToCart',$product->id) }}" type="button" data-toggle="modal" data-target="#myModal">add to cart</button>
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div>
                 </div>
@@ -123,6 +115,128 @@
   </div>
 </div>
 <div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+          </div>
+          <div class="modal-body">
+              <div class="view-render">
+
+              </div>
+            {{-- <table class="table" id="render">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">san pham</th>
+                    <th scope="col">title</th>
+                    <th scope="col">price</th>
+                    <th scope="col">so luong</th>
+                    <th scope="col">total</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+                @php
+                $total = 0;   
+                @endphp
+                @if(Session::has('cart'))
+                    <tbody>
+                        @foreach ($carts as $id => $cart)
+                    
+                        <tr  data-id="{{$id}}">
+                            <th scope="row">{{ $id }}</th>
+                            <td style="width: 15%">
+                                <img style="width:100%" src="{{ asset('storage/' . $cart['image']) }}" alt="">
+                            </td>
+                            <td style="width: 20%">{{ $cart['name'] }}</td>
+                            <td id="price" price="{{ $cart['price'] }}">{{ number_format($cart['price'], '0', '.', '.') }}
+                                VND
+                            </td>
+                            <td>
+                                <div id="btn-qt">
+                                    <button class="btn-qty discount update" data-id="{{ $id }}"
+                                        data="{{ $id }}" id="add">-</button>
+                                    <input type="number" data="{{ $id }}" id="qty_{{ $id }}"
+                                        value="{{ $cart['quantity'] }}" min="0" class="update-cart"
+                                        data-url="{{ route('update') }}">
+                                    <button class="btn-qty increase update " data-id="{{ $id }}"
+                                        data="{{ $id }}" id="add">+</button>
+                                </div>
+    
+                            </td>
+                            <td class="total" total-cart="{{ $cart['price'] * $cart['quantity'] }}">
+                                {{ number_format($cart['price'] * $cart['quantity'], '0', '.', '.') }} VND
+                            </td>
+                            <td>
+                                <a class="delete" data-url="{{ route('delete') }}" data-id="{{ $id }}"
+                                    href=""><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                                    @php
+                                        $total += $cart['price']*$cart['quantity'];   
+                                    @endphp
+                            @endforeach
+                    </tbody>
+                @endif
+            </table>  --}}
+            {{-- @include('users.carts.row') --}}
+           
+          
+          <div class="modal-footer">
+            <div>
+                <a class="btn btn-success" style="color: white" href="{{route('cart')}}">di toi gio hang</a>
+            </div>
+            <button class="btn btn-info payment">Thanh toan</button>
+          </div>
+          <div style="display: none" class=" pay">
+            <hr>
+            @include('users.carts.payment')
+            {{-- <form action="" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Thong tin mua hang</h4>
+                            <div class="form-group">
+                                
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Ho va Ten">
+                            </div>
+                            <div class="form-group">
+                                
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea name="address" id="address" cols="30" class="form-control" rows="10"></textarea>
+                               
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h4>Thanh toan</h4>
+                            <select name="pay" id="" class="form-control">
+                                <option value="0">Thanh toan khi giao hang (COD)</option>
+                                <option value="1">Chuyen khoan qua ngan hang</option>
+                            </select>
+                            
+                        </div>
+                      
+                    </div>
+                    <button type="submit" style="float: right" class="btn btn-success mb-3">Dat mua</button>
+                </div>
+                
+            </form> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
     <div class="row">
         <div class="border text-center mt-5" style="margin: 0 auto; width:70%; background:#b4cbd7">
             <h3>San pham vua xem</h3>
@@ -152,5 +266,47 @@
         @endforeach
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script>
+    $('.btn-qty').click(function(){
+        var key = $(this).attr('data');
+        // var id = $('#id_' + key).val();
+        var qty = $('#qty_' + key).val();
+        // alert('id:'+id + 'qty: '+qty);
+        if($(this).hasClass('discount')){
+            $(this).parents('tr').find('input').val(parseInt(qty) - 1)
+            //  updateCart(id,parseInt(qty) - 1 )
+        }
+        else if($(this).hasClass('increase')){
+            $(this).parents('tr').find('input').val(parseInt(qty) + 1)
+            //  updateCart(id,parseInt(qty) + 1 )
+        }
+    })
+
+    function updateCart(){
+        $('.update').click(function(){
+        // event.preventDefault();
+        var updateurl = $('.update-cart').data('url');
+        // alert(updateurl);
+        var id = $(this).data('id');
+        var quantity = $(this).parents('tr').find('input').val();
+        $.ajax({
+            type: "GET",
+            url: updateurl,
+            data:{
+                id: id,
+                quantity: quantity  
+            },
+            success: function(data){
+                // location.reload(); 
+               },
+               error : function(){
+    
+               }
+        })
+    })
+    }
+
+</script> --}}
 
 @endsection
