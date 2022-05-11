@@ -6,6 +6,7 @@
             <input autocomplete='off' class='search-input' name='search' placeholder='Search this blog' type='search'
                 value='' />
             <span class='hide-search'></span>
+
         </form>
     </div>
     <span class="ajax-message"></span>
@@ -19,7 +20,7 @@
                             <div class="d-flex justify-content-between align-items-center p-2 first">
                                 <span class="percent">-25%</span> <span class="wishlist">
                                     <i class="fa fa-heart"></i></span>
-                            </div> <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid">
+                            </div> <img style="height:200px" src="{{ asset('storage/' . $product->image) }}" class="img-fluid">
                         </div>
                         <div class="product-detail-container">
                             <div class="d-flex justify-content-between align-items-center">
@@ -104,6 +105,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+      
               </div>
               <div class="view-render">
             </div>
@@ -123,4 +125,5 @@
           </div>
         </div>
       </div>
+    </div>
 @endsection

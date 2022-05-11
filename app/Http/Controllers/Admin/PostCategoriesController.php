@@ -18,31 +18,37 @@ class PostCategoriesController extends Controller
     }
 
     public function index(){
+        $categories =  PostCategory::orderByDesc('created_at')->paginate(20);
         return view('admin.categories.index',[
-            'categories' => PostCategory::orderByDesc('created_at')->paginate(20)
+            'categories' => $categories
         ]);
     }
 
     public function create(){
         return view('admin.categories.create');
     }
+
     public function store(){
         $attributes = $this->validateForm();
         $attributes['slug'] =  Str::slug(request()->name , '-');
         PostCategory::create($attributes);
         return redirect()->route('categories.index')->with('msg','Thêm Mới  Thành Công'); 
     }
+
     public function edit($slug){
+        $category =PostCategory::where('slug',$slug)->firstOrFail();
         return view('admin.categories.edit',[
-            'category' => PostCategory::where('slug',$slug)->first()
+            'category' => $category
         ]);
     }
+
     public function update(PostCategory $category){
         $attributes = $this->validateForm();
         $attributes['slug'] = Str::slug(request()->name , '-');
         $category->update($attributes);
         return redirect('/admin/categories')->with('msg','Thêm Mới  Thành Công');
     }
+    
     public function destroy($slug){
         PostCategory::where('slug',$slug)->delete();
         return redirect('/admin/categories')->with('msg','Xóa Thành Công');  

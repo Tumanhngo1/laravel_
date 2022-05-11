@@ -132,4 +132,5 @@ $(document).ready(function(){
         var fomatShip = freeShip.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
         $('.ship').html("<span>Phi van chuyen:  " +fomatShip+"VND</span>");
     })
+    
 })

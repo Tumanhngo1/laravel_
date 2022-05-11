@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\OderController;
 use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\PostCommentController;
@@ -45,9 +46,13 @@ Route::get('update-carts',[CartController::class,'update'])->name('update');
 Route::get('delete-carts',[CartController::class,'destroy'])->name('delete');
 
 
+Route::get('mail',[CartController::class,'testMail'])->name('delete');
+
+
 //order
 Route::get('paymet-carts',[OrderController::class,'create']);
 Route::post('order-carts',[OrderController::class,'store'])->name('payment');
+Route::get('confirm/{token}/{customer}',[OrderController::class,'confirm'])->name('confirm');
 
 
 
@@ -78,6 +83,11 @@ Route::middleware('can:admin')->group(function(){
     Route::post('admin/size/{product:slug}',[AttributeController::class,'storesize']);
     Route::get('admin/size/{product:slug}/edit',[AttributeController::class,'sizeedit']);
     Route::get('admin/size/{product:slug}/delete',[AttributeController::class,'sizedestroy']);
+
+
+    //order
+    Route::get('admin/order',[OderController::class,'index']);
+    Route::get('admin/destroy/{id}',[OderController::class,'destroy']);
  
 });
 

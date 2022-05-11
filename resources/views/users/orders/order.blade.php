@@ -8,6 +8,29 @@
             <div class="row mt-5">
                 <div class="col-4">
                     <h4>Thong tin mua hang</h4>
+                    @auth
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" value="{{Auth::user()->name}}" class="form-control" placeholder="Ho va Ten">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="email" name="email" value="{{Auth::user()->email}}" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea>
+                        <select name="calc_shipping_provinces" class="form-control" >
+                            <option value="">Tỉnh / Thành phố</option>
+                          </select>
+                          <select name="calc_shipping_district" class="form-control" >
+                            <option value="">Quận / Huyện</option>
+                          </select>
+                          <input class="billing_address_1" name="" type="hidden" value="">
+                          <input class="billing_address_2" name="" type="hidden" value="">
+                    </div>
+              
+                    @else 
                     <div class="form-group">
                         <input type="text" id="name" name="name" class="form-control" placeholder="Ho va Ten">
                     </div>
@@ -18,9 +41,19 @@
                         <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
                     </div>
                     <div class="form-group">
-                        <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea>
-
+                        {{-- <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea> --}}
+                        <select name="calc_shipping_provinces" class="form-control" >
+                            <option value="">Tỉnh / Thành phố</option>
+                          </select>
+                    </div> 
+                    <div class="form-group">
+                        <select name="" id="" class="form-control">
+                            <option value="">Quận / Huyện</option>
+                        </select>
                     </div>
+                    
+                    @endauth
+                   
                 </div>
                 <div class="col-4">
                     <h4>Thong tin san pham</h4>

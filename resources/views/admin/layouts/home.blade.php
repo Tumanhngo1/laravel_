@@ -186,38 +186,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       @endforeach --}}
                     </ul>
                   </p>
-                 
                 </a>
               </li>
+              
             </ul>
           </li>
-          {{-- <li>
-            <p style="color: aliceblue; margin-left:10px">Attributes</p>
+          <li>
+            <p style="color: aliceblue; margin-left:10px">Oder</p>
             <ul>
               <li class="nav-item">
-                <a href="/admin/attr" class="nav-link">
+                <a href="/admin/order" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Quản lý thuoc tinh san pham
+                    Quản lý don hang
                    
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('attr.create') }}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Quản lý  thuoc tinh san pham
-                    
-                    <ul>
-                     
-                    </ul>
-                  </p>
-                 
-                </a>
-              </li>
             </ul>
-          </li> --}}
+          </li>
           
           
         </ul>

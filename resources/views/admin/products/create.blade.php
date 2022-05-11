@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-group">
                   <label for="editor">Nội dung</label>
-                  <textarea name="description" id="ckeditor" cols="30" rows="10"  class="form-control">{{old('description')}}</textarea>
+                  <textarea name="description" id="mytextarea" cols="30" rows="10"  class="form-control">{{old('description')}}</textarea>
                      @error('description')
                      <span  style="color: red">{{ $message }}</span>
                      @enderror

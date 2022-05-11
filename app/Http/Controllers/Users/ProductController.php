@@ -10,15 +10,16 @@ use Illuminate\Session\Store;
 class ProductController extends Controller
 {
     public function index(){
+        $products = Product::latest()->filter(request(['search','category']))
+        ->paginate(7);
         return view('users.products.products',[
-          'products' => Product::latest()->filter(request(['search','category']))
-          ->paginate(7)->withQueryString(),
+          'products' => $products
         ]);
     }
 
     
     public function show($slug, Store $session){
-        $product = Product::where('slug',$slug)->first();
+        $product = Product::where('slug',$slug)->firstOrFail();
 
         $recentPros = $session->get('resent_products',[]);
         $recentPros[] = $product;
