@@ -8,8 +8,10 @@
             <span class='hide-search'></span>
         </form>
     </div>
-    {{-- <div class="view-render"> --}}
-        <table class="table mt-5" id="render">
+   
+    <div class="view-render">
+        @include('users.carts.row')
+        {{-- <table class="table mt-5" id="render">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -72,9 +74,9 @@
         </table>
         
         <div class="col-12" id="cart_total" style="text-align: right">
-            <h3>Total: {{ number_format($total, '0', '.', '.') }} VND</h3>
-        </div>
-    {{-- </div> --}}
+            <h3>Total: {{ number_format($total, '0', '.', '.') }} VND</h3> --}}
+        {{-- </div> --}}
+    </div>
     
     <hr>
     <div style="float: right" class="mb-5">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\OderController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\PostCommentController;
@@ -38,15 +39,12 @@ Route::get('products',[UsersProductController::class,'index']);
 Route::get('products/{product}',[UsersProductController::class,'show']);
 Route::post('products/{product:slug}/comments',[ProductCommentController::class,'store']);
 
-//cart
 
+//cart
 Route::get('carts/{cart}',[CartController::class,'show'])->name('addToCart');
 Route::get('show-carts',[CartController::class,'index'])->name('cart');
 Route::get('update-carts',[CartController::class,'update'])->name('update');
 Route::get('delete-carts',[CartController::class,'destroy'])->name('delete');
-
-
-Route::get('mail',[CartController::class,'testMail'])->name('delete');
 
 
 //order
@@ -56,12 +54,19 @@ Route::get('confirm/{token}/{customer}',[OrderController::class,'confirm'])->nam
 
 
 
-// auth
+//auth
 Route::get('register',[RegisterController::class,'create'])->middleware('guest');
 Route::post('register',[RegisterController::class,'store'])->middleware('guest');
 Route::get('login',[LoginController::class,'create'])->middleware('guest');
 Route::post('login',[LoginController::class,'store'])->middleware('guest');
 Route::post('logout',[LoginController::class,'destroy'])->middleware('auth');
+
+//reset_password
+Route::get('forget-password', [ForgotPasswordController::class, 'showForget'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForget'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showReset'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitReset'])->name('reset.password.post');
+
 
 //admin
 Route::middleware('can:admin')->group(function(){

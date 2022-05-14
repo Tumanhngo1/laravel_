@@ -23,17 +23,50 @@ $(document).ready(function(){
     
     
     //update
-    function TotalCart(){
-        var total_cart = 0;
-        $('.total').each(function(){
-            var price = $(this).attr('total-cart');
-            total_cart += parseFloat(price) ;
-            var fomatTotal =  total_cart.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-          $('#cart_total').html("<h3>Total: "+fomatTotal+" VND </h3>");
-        })
-    }
-    $(document).on('click', '.update', function(){
-        // alert('hihih')
+    // function TotalCart(){
+    //     var total_cart = 0;
+    //     $('.total').each(function(){
+    //         var price = $(this).attr('total-cart');
+    //         total_cart += parseFloat(price) ;
+    //         var fomatTotal =  total_cart.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    //       $('#cart_total').html("<h3>Total: "+fomatTotal+" VND </h3>");
+    //     })
+    // }
+    // $(document).on('click', '.update', function(){
+    //     // alert('hihih')
+    //     var key = $(this).attr('data');
+    //     var qty = $('#qty_' + key).val();
+    //     if($(this).hasClass('discount')){
+    //         $(this).parents('tr').find('input').val(parseInt(qty) - 1)
+    //     }
+    //     else if($(this).hasClass('increase')){
+    //         $(this).parents('tr').find('input').val(parseInt(qty) + 1)
+    //     }
+    //     $('.update-cart').change();
+    //     var input= $(this).parents('tr').find("input").val()   
+    //     var price = $(this).parents('tr').find("#price").attr('price');    
+    //     var id = $(this).data('id');
+    //     var total = input * price;
+    // })
+    // $('.update-cart').change(function(){
+    //     var input= $(this).val()          
+    //     var price = $(this).parents('tr').find("#price").attr('price');               
+    //     var total = input * price;      
+    //     var price_cart =  $(this).parents('tr').find('.total').attr('total-cart');
+    //     price_cart = input * price; 
+    //     var fomat = total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    //     $(this).parents('tr').find('.total').html(fomat+ " VND");
+    //     $(this).parents('tr').find('.total').attr('total-cart',price_cart);
+    //     var qty = $(this).attr('value',input);
+    //     var id = $(this).parents('tr').find('.update').data('id');
+    //     if(qty <= 0){
+    //         $( "tr[data-id='"+id+"']" ).remove();
+    //     }
+    //     TotalCart(true);
+    // })
+ 
+    $(document).on('click', '.update', function(event){
+        event.preventDefault();
         var key = $(this).attr('data');
         var qty = $('#qty_' + key).val();
         if($(this).hasClass('discount')){
@@ -42,39 +75,6 @@ $(document).ready(function(){
         else if($(this).hasClass('increase')){
             $(this).parents('tr').find('input').val(parseInt(qty) + 1)
         }
-        $('.update-cart').change();
-        var input= $(this).parents('tr').find("input").val()   
-        var price = $(this).parents('tr').find("#price").attr('price');    
-        var id = $(this).data('id');
-        var total = input * price;
-    })
-    $('.update-cart').change(function(){
-        var input= $(this).val()          
-        var price = $(this).parents('tr').find("#price").attr('price');               
-        var total = input * price;      
-        var price_cart =  $(this).parents('tr').find('.total').attr('total-cart');
-        price_cart = input * price; 
-        var fomat = total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-        $(this).parents('tr').find('.total').html(fomat+ " VND");
-        $(this).parents('tr').find('.total').attr('total-cart',price_cart);
-        var qty = $(this).attr('value',input);
-        var id = $(this).parents('tr').find('.update').data('id');
-        if(qty <= 0){
-            $( "tr[data-id='"+id+"']" ).remove();
-        }
-        TotalCart(true);
-    })
- 
-    $(document).on('click', '.update', function(){
-        // event.preventDefault();
-        // var key = $(this).attr('data');
-        // var qty = $('#qty_' + key).val();
-        // if($(this).hasClass('discount')){
-        //     $(this).parents('tr').find('input').val(parseInt(qty) - 1)
-        // }
-        // else if($(this).hasClass('increase')){
-        //     $(this).parents('tr').find('input').val(parseInt(qty) + 1)
-        // }
         var updateurl = $(this).data('url');
         var id = $(this).data('id');
         var quantity = $(this).parents('tr').find('input').val();

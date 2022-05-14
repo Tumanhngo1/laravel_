@@ -20,14 +20,14 @@
                     </div>
                     <div class="form-group">
                         <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea>
-                        <select name="calc_shipping_provinces" class="form-control" >
+                        {{-- <select name="calc_shipping_provinces" class="form-control" >
                             <option value="">Tỉnh / Thành phố</option>
                           </select>
                           <select name="calc_shipping_district" class="form-control" >
                             <option value="">Quận / Huyện</option>
                           </select>
                           <input class="billing_address_1" name="" type="hidden" value="">
-                          <input class="billing_address_2" name="" type="hidden" value="">
+                          <input class="billing_address_2" name="" type="hidden" value=""> --}}
                     </div>
               
                     @else 
@@ -41,15 +41,15 @@
                         <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
                     </div>
                     <div class="form-group">
-                        {{-- <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea> --}}
-                        <select name="calc_shipping_provinces" class="form-control" >
+                        <textarea name="address" id="address" cols="30" class="form-control" rows="10" placeholder="Dia chi"></textarea>
+                        {{-- <select name="calc_shipping_provinces" class="form-control" >
                             <option value="">Tỉnh / Thành phố</option>
                           </select>
                     </div> 
                     <div class="form-group">
                         <select name="" id="" class="form-control">
                             <option value="">Quận / Huyện</option>
-                        </select>
+                        </select> --}}
                     </div>
                     
                     @endauth

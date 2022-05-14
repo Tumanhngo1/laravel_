@@ -32,18 +32,28 @@ return [
     |            "postmark", "log", "array", "failover"
     |
     */
-
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' =>'smtp.gmail.com',
-            'port' => 587,
-            'encryption' => 'tls',
-            'username' => 'tublue32@gmail.com',
-            'password' => 'uavfdgszjtjmaler',
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME','tublue32@gmail.com'),
+            'password' => env('MAIL_PASSWORD','uavfdgszjtjmaler'),
             'timeout' => null,
             'auth_mode' => null,
         ],
+    // 'mailers' => [
+    //     'smtp' => [
+    //         'transport' => 'smtp',
+    //         'host' =>'smtp.gmail.com',
+    //         'port' => 587,
+    //         'encryption' => 'tls',
+    //         'username' => 'tublue32@gmail.com',
+    //         'password' => 'djoeijedxxptgirs',
+    //         'timeout' => null,
+    //         'auth_mode' => null,
+    //     ],
 
         'ses' => [
             'transport' => 'ses',
@@ -92,9 +102,14 @@ return [
     */
 
     'from' => [
-        'address' => 'tublue32@gmail.com',
-        'name' => 'Shop TuBlue',
+        'address' => env('MAIL_FROM_ADDRESS', 'tublue32@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Shop TuBlue'),
     ],
+    // 'from' => [
+    //     'address' => 'tublue32@gmail.com',
+    //     'name' => 'Shop TuBlue',
+    // ],
+    // 'notification_reciplant' => "tublue32@gmail.com",
 
     /*
     |--------------------------------------------------------------------------

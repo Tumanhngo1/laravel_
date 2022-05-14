@@ -8,6 +8,7 @@ use App\Models\Oder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Jobs\ProcessPodcast;
 
 class OrderController extends Controller
 {
@@ -26,7 +27,6 @@ class OrderController extends Controller
         $customer = Customer::create($attribute);
         if( $customer){
             $customer_id = $customer->id;
-            // dd(session()->get('cart'));
             foreach(session()->get('cart') as $cart){
                 Oder::create([
                     'customer_id' => $customer_id,
@@ -35,19 +35,26 @@ class OrderController extends Controller
                     'total' => $cart['quantity']*$cart['price']
                 ]);
             };
-            
-     
-            Mail::send('email.confirm',[
-                'name' => request()->name,
-                'customer' => $customer
-                ],function($email){
-                $email->subject('Project');
-                $email->to(request()->email,request()->name);
-            });
+        //  Mail::send('email.confirm',[
+        //         'name' => request()->name,
+        //         'customer' => $customer
+        //         ],function($email){
+        //         $email->subject('Project');
+        //         $email->to(request()->email,request()->name);
+        //     });
+    
+           
             session()->forget('cart');
-     
+           
         }
-        return redirect('/products');
+
+        $customer['email'] = request()->email;
+
+        $emailJob = new ProcessPodcast($customer);
+        
+        dispatch($emailJob);
+    
+         return redirect('/products');
     }
 
     public function confirm($token ,Customer $customer){

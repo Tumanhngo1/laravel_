@@ -77,6 +77,6 @@
     @else
     <p style="text-align: center; margin:10px;">Khong co bai viet</p>
     @endif
- 
+  
 
 @endsection

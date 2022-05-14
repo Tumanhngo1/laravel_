@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\ProcessPodcast;
 
 
 class CartController extends Controller
@@ -31,7 +32,7 @@ class CartController extends Controller
         }
         session()->put('cart',$cart);
     
-        return  view('users.carts.viewRend')->render();
+        return  view('users.carts.row')->render();
   
     }
 
@@ -56,13 +57,8 @@ class CartController extends Controller
            unset($carts[request()->id]);
            session()->put('cart',$carts);
        }
-       return view('users.carts.delete')->render();
+       return view('users.carts.row')->render();
     }
 
-    public function testMail(){
-        Mail::send('email.test',['name'=>'Ngo Manh Tu'],function($email){
-            $email->to('tublue32@gmail.com',"Ngo Manh Tu");
-            $email->subject('demo test');
-        });
-    }
+
 }
