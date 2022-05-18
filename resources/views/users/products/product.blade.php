@@ -130,9 +130,6 @@
                         <div class="view-render">
 
                         </div>
-
-
-
                         <div class="modal-footer">
                             <div>
                                 <a class="btn btn-success" style="color: white" href="{{ route('cart') }}">di toi gio

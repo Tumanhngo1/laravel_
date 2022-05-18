@@ -36,6 +36,10 @@ class Post extends Model
     }
 
     public function comments(){
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderByDesc('id');
+    }
+
+    public function replays(){
+        return $this->hasMany(Replay::class)->orderByDesc('id');
     }
 }

@@ -12,8 +12,7 @@ use App\Jobs\ProcessPodcast;
 class CartController extends Controller
 {
     public function index(){
-        $carts = session()->get('cart');
-        return view('users.carts.home',compact('carts'));
+        return view('users.carts.home');
     }
     
     public function show($id){

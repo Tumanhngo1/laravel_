@@ -3426,3 +3426,4 @@ input::-webkit-inner-spin-button {
 #btn-qt{
   display: flex;
 }
+p.text-xs {margin-left: 12px;margin-top: 4px;}

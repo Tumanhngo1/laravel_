@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\OderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\OrderController;
@@ -32,7 +33,9 @@ use Illuminate\Support\Facades\Route;
 // home/user
 Route::get('/',[PostController::class,'index']);
 Route::get('users/{post}',[PostController::class,'show']);
-Route::post('users/{post:slug}/comments',[PostCommentController::class,'store']);
+Route::get('users/comment/{post}',[PostCommentController::class,'comment'])->name('comment');
+Route::get('users/replay/{comment}',[PostCommentController::class,'replay'])->name('replay');
+// Route::post('users/{post:slug}/comments',[PostCommentController::class,'store']);
 
 //HOME/PRODCT
 Route::get('products',[UsersProductController::class,'index']);
@@ -93,6 +96,9 @@ Route::middleware('can:admin')->group(function(){
     //order
     Route::get('admin/order',[OderController::class,'index']);
     Route::get('admin/destroy/{id}',[OderController::class,'destroy']);
+
+    //user
+    Route::resource('admin/users',UserController::class);
  
 });
 

@@ -125,12 +125,59 @@ $(document).ready(function(){
 
     $( ".payment" ).click(function() {
         $( ".pay" ).toggle('slow');
-      });
+    });
 
-    $('#pay').click(function(){
-        var freeShip = $('#pay option:selected').val();
-        var fomatShip = freeShip.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-        $('.ship').html("<span>Phi van chuyen:  " +fomatShip+"VND</span>");
+    $('.save-comment').click(function(){
+        // e.preventDefault();
+        var body = $('#body').val();
+        var urlPost = $(this).data('url');
+        // alert(urlPost)
+    
+        $.ajax({
+            url:urlPost,
+            type:"GET",
+            data:{
+                body: body,
+                _token: '{{csrf_token()}}'
+            },
+           
+            success:function(data){
+               $('#body').val("");
+                $('#comment').html(data); 
+            } 
+        })
+    });
+    $(document).on('click','.prereplay', function(e){
+        e.preventDefault();
+        var id = $(this).attr('data');
+        $("#replay_"+id).toggle('slow');
+    });
+    $(document).on('click','.toReplay', function(e){
+        e.preventDefault();
+        var id = $(this).attr('data');
+        var toReplay = $("#toReplay_"+id).val();
+        var urlReplay = $(this).data('url');
+        // alert(urlReplay)
+        $.ajax({
+            url:urlReplay,
+            type:"GET",
+            data:{
+                body: toReplay,
+                // _token: '{{csrf_token()}}'
+            },
+            success: function(data){
+                $("#toReplay_"+id).val("");
+                $("#replay_"+id).toggle('slow');
+                $('.replay'+id).html(data); 
+            }
+        });
+    })
+    $('.feel').change(function(){
+        $(this).css("color", "blue") ;
+    })
+    $('.feel').click(function(e){
+        e.preventDefault();
+        $(this).change();
     })
     
 })

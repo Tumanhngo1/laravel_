@@ -498,7 +498,9 @@ Contact Form
 </div>
 </div>
 <!-- Hosted Plugins -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+{{-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'></script> --}}
+<script src="{{asset('/assets/js/main.js')}}"></script>
 <!-- Main Scripts -->
 <script type='text/javascript'>
 //<![CDATA[

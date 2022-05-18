@@ -46,12 +46,11 @@ class ForgotPasswordController extends Controller
          return view('auth.forgetPasswordLink', ['token' => $token]);
       }
   
-     
       public function submitReset(Request $request)
       {
           $request->validate([
               'email' => 'required|email|exists:users',
-              'password' => 'required|string|min:6|confirmed',
+              'password' => 'required|string|min:1|confirmed',
               'password_confirmation' => 'required'
           ]);
   

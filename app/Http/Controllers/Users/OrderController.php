@@ -52,7 +52,7 @@ class OrderController extends Controller
 
         $emailJob = new ProcessPodcast($customer);
         
-        dispatch($emailJob);
+        dispatch($emailJob)->delay(now()->addMinutes(10));
     
          return redirect('/products');
     }

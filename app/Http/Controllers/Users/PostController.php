@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
     public function index(){
-
+        $posts = Post::latest()->filter(request(['search','category','author']))
+        ->paginate(10)->withQueryString();
         return view('users.home.posts',[
-            'posts' => Post::latest()->filter(request(['search','category','author']))
-            ->paginate(10)->withQueryString()
+            'posts' => $posts
         ]);
     }
 
@@ -24,5 +26,22 @@ class PostController extends Controller
             'post' => $post,
             'populars' => $popular
         ]);
+    }
+    public function comment(Post $post){
+
+    request()->validate([
+        'body' => 'required'
+    ]);
+    $post->comments()->create([
+        'user_id' => request()->user()->id,
+        'body' => request()->body
+    ]);
+    
+    $response = array(
+        'status' => 'success',
+        'msg' => 'Setting created successfully',
+    );
+
+    return response()->json( $response );
     }
 }
