@@ -167,7 +167,7 @@ $(document).ready(function(){
             },
             success: function(data){
                 $("#toReplay_"+id).val("");
-                $("#replay_"+id).toggle('slow');
+                $("#replay_"+id).hide();
                 $('.replay'+id).html(data); 
             }
         });
@@ -179,5 +179,39 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).change();
     })
+    $(document).on('click','.editComment',function(e){
+        e.preventDefault();
+        var idEdit = $(this).attr('data');
+        $("#form_edit"+idEdit).toggle('slow')
+        $('.body_comment'+idEdit).hide();
+        
+    })
     
+    $(document).on('click','.edit',function(e){
+        e.preventDefault();
+        var idEdit = $(this).attr('data');
+        var body = $('.body'+idEdit).val();
+        var urlEdit = $(this).data('url');
+        var token =  $('input[name="_token"]').val();
+        // alert(token)
+        $.ajax({
+            type: "PUT",
+            url: urlEdit,
+           
+            data:{
+                id : idEdit,
+                body: body,
+                _token: token
+            },
+            success: function(data){
+                // alert(data)
+                $('form[name="form"]').hide()
+                // $('.editComment'+idEdit).html(data)
+                $('.editComment'+idEdit).html("<p>"+data+"</p>");
+            }
+        })
+        
+    
+       
+    })
 })

@@ -17,13 +17,13 @@
                         <p style="color:red">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form-group mt-3">
+                {{-- <div class="form-group mt-3">
                     <label for="username">Username</label>
                     <input type="text" value="{{old('username')}}"  class="form-control" style="background:bisque" id="username" name="username" required>
                     @error('username')
                     <p style="color:red">{{ $message }}</p>
                 @enderror
-                </div>
+                </div> --}}
                 <div class="form-group mt-3">
                     <label for="email">Email</label>
                     <input type="text" value="{{old('email')}}"  class="form-control" style="background:bisque" id="email" name="email" required>

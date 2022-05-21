@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     use HasFactory;
-
+    // use SoftDeletes;
+    // const STATUS_DRAFT = 'draft';
+    // const STATUS_UNPUBLISHED = 'unpublished';
+    // const STATUS_PUBLISHED = 'published';
+    
     public function scopeFilter($query, array $filters){
         $query->when($filters['search'] ?? false, fn($query,$search)
         =>$query->where(fn($query)
@@ -26,6 +31,11 @@ class Post extends Model
                     =>$query->where('username',$author)
                 ));
     }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\Models\User');
+    // }
 
     public function author(){
         return $this->belongsTo(User::class,'user_id');

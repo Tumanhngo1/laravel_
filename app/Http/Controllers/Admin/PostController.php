@@ -12,6 +12,12 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('can:view,post')->only('show');
+    // }
+
     protected function validateForm(Post $post=null) : array
     {
         $post ??= new Post();
@@ -37,15 +43,17 @@ class PostController extends Controller
     }
     public function store(){
         Post::create(array_merge($this->validateForm(),[
-            'user_id' => request()->user()->id,
+            'user_id' => request()->user_id,
             'slug' => Str::slug(request()->title, '-'),
             'image' => request()->file('image')->store('thumbnails'),
         ]));
         return redirect('/admin/posts')->with('msg','Thêm Mới  Thành Công'); 
     }
     public function show($slug){
+        $post = Post::where('slug',$slug)->first();
+        // $this->authorize('view', $post);
         return view('admin.post.show',[
-            'post' => Post::where('slug',$slug)->first()
+            'post' => $post
         ]);
     }
     public function edit($slug){

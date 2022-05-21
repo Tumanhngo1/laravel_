@@ -21,6 +21,7 @@
 <meta content='Amalia' name='twitter:title'/>
 <meta content='https://amalia-templateify.blogspot.com/' name='twitter:domain'/>
 <meta content='' name='twitter:description'/>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <script type='application/ld+json'>{"@context":"http://schema.org","@type":"WebSite","name":"Amalia","url":"https://amalia-templateify.blogspot.com/","potentialAction":{"@type":"SearchAction","target":"https://amalia-templateify.blogspot.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <!-- Font Awesome -->
 {{-- <link href='https://use.fontawesome.com/releases/v5.0.10/css/all.css' rel='stylesheet'/> --}}

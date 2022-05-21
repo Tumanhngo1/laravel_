@@ -27,21 +27,5 @@ class PostController extends Controller
             'populars' => $popular
         ]);
     }
-    public function comment(Post $post){
 
-    request()->validate([
-        'body' => 'required'
-    ]);
-    $post->comments()->create([
-        'user_id' => request()->user()->id,
-        'body' => request()->body
-    ]);
-    
-    $response = array(
-        'status' => 'success',
-        'msg' => 'Setting created successfully',
-    );
-
-    return response()->json( $response );
-    }
 }

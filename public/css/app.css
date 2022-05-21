@@ -11285,4 +11285,18 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+/* }#animation {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
+
+@keyframes example {
+  0%   {background-color:red; right:-1200px; top:0px;}
+  75%  {background-color:green; right:-900px; top:0px;}
+  100% {background-color:red; right:-1200px; top:0px;}
+} */

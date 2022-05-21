@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         Model::unguard();
-        Gate::define('admin',function(User $user){
-            return $user->username == 'admin';
-        });
+        // Gate::define('admin',function(User $user){
+        //     return $user->username == 'admin';
+        // });
         Blade::if('admin',function(){
             return request()->user()?->can('admin');
         });

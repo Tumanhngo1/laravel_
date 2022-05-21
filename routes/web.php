@@ -34,6 +34,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PostController::class,'index']);
 Route::get('users/{post}',[PostController::class,'show']);
 Route::get('users/comment/{post}',[PostCommentController::class,'comment'])->name('comment');
+Route::put('users/comment/edit/{post}',[PostCommentController::class,'update'])->name('editComment');
+Route::get('users/comment/delete/{post}',[PostCommentController::class,'delete'])->name('deleteComment');
 Route::get('users/replay/{comment}',[PostCommentController::class,'replay'])->name('replay');
 // Route::post('users/{post:slug}/comments',[PostCommentController::class,'store']);
 
@@ -41,6 +43,7 @@ Route::get('users/replay/{comment}',[PostCommentController::class,'replay'])->na
 Route::get('products',[UsersProductController::class,'index']);
 Route::get('products/{product}',[UsersProductController::class,'show']);
 Route::post('products/{product:slug}/comments',[ProductCommentController::class,'store']);
+
 
 
 //cart

@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     
     public function show($slug, Store $session){
-        $product = Product::where('slug',$slug)->firstOrFail();
+        $product = Product::whereSlug($slug)->firstOrFail();
 
         $recentPros = $session->get('resent_products',[]);
         $recentPros[] = $product;

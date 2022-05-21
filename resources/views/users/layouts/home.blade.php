@@ -32,42 +32,42 @@
 </div></div>
 </div>
 <nav class='header-menu'>
-<span class='social-toggle'></span>
-<div class='social-icons section' id='social-icons' name='Social Icons'><div class='widget LinkList' data-version='2' id='LinkList153'>
-<ul class='social'>
-<li class='facebook'><a href='#' target='_blank'></a></li>
-<li class='twitter'><a href='#' target='_blank'></a></li>
-<li class='gplus'><a href='#' target='_blank'></a></li>
-<li class='pinterest'><a href='#' target='_blank'></a></li>
-<li class='instagram'><a href='#' target='_blank'></a></li>
-</ul>
+  <span class='social-toggle'></span>
+  <div class='social-icons section' id='social-icons' name='Social Icons'><div class='widget LinkList' data-version='2' id='LinkList153'>
+  <ul class='social'>
+  <li class='facebook'><a href='#' target='_blank'></a></li>
+  <li class='twitter'><a href='#' target='_blank'></a></li>
+  <li class='gplus'><a href='#' target='_blank'></a></li>
+  <li class='pinterest'><a href='#' target='_blank'></a></li>
+  <li class='instagram'><a href='#' target='_blank'></a></li>
+  </ul>
 </div></div>
-<span class='show-mobile-menu'></span>
-<div class='main-menu section' id='main-menu' name='Main Menu'><div class='widget LinkList' data-version='2' id='LinkList155'>
-<ul data-title='Menu' id='main-menu-nav' role='menubar'>
-<li><a href='/' role='menuitem'>Home</a></li>
+  <span class='show-mobile-menu'></span>
+  <div class='main-menu section' id='main-menu' name='Main Menu'><div class='widget LinkList' data-version='2' id='LinkList155'>
+  <ul data-title='Menu' id='main-menu-nav' role='menubar'>
+  <li><a href='/' role='menuitem'>Home</a></li>
 
-@php
-  $categories = App\Models\ProductCategory::all()    
-@endphp
+  @php
+    $categories = App\Models\ProductCategory::all()    
+  @endphp
 
-<li><a href='/products' role='menuitem'>products</a></li>
-@foreach ($categories as $category)
+  <li><a href='/products' role='menuitem'>products</a></li>
+  @foreach ($categories as $category)
 <li><a href='/products/?category={{$category->slug}}' role='menuitem'>__{{$category->name}}</a></li>
 @endforeach
 
 <li><a href='https://youtu.be/elLy6sKB_Po' role='menuitem'>_Video Doc</a></li>
 <li><a href='https://www.templateify.com/2018/09/amalia-beauty-blogger-template.html' role='menuitem'>Download This Template</a></li>
-<li> @auth
-  @can('admin')
-  <li>
-    <a class="admin" href="/admin/categories" :active="request()->is('admin/categories')">Admin</a>
- 
-  </li>
-@endcan
-  <li>
-    <span  class="text-xs font-bold uppercase"> wellcome , {{Auth::user()->name}}</span>
-  </li>
+  <li> @auth
+    @can('admin')
+    <li>
+      <a class="admin" href="/admin/categories" :active="request()->is('admin/categories')">Admin</a>
+  
+    </li>
+  @endcan
+    <li>
+      <span  class="text-xs font-bold uppercase"> wellcome , {{Auth::user()->name}}</span>
+    </li>
   <li  class='menuitem'>
       <form action="/logout" method="post">
       @csrf
@@ -117,32 +117,32 @@
 
 
 <!-- Hidden Widgets -->
-<div class='hidden-widgets' style='display:none!important'>
-<div class='hidden-widgets section' id='hidden-widgets'><div class='widget ContactForm' data-version='2' id='ContactForm1'>
-<div class='widget-title'>
-<h3 class='title'>
-Contact Form
-</h3>
-</div>
-<div class='contact-form-widget'>
-<div class='form'>
-<form name='contact-form'>
-<input class='contact-form-name' id='ContactForm1_contact-form-name' name='name' placeholder='Name' size='30' type='text' value=''/>
-<input class='contact-form-email' id='ContactForm1_contact-form-email' name='email' placeholder='Email*' size='30' type='text' value=''/>
-<textarea class='contact-form-email-message' cols='25' id='ContactForm1_contact-form-email-message' name='email-message' placeholder='Message*' rows='5'></textarea>
-<input class='contact-form-button contact-form-button-submit' id='ContactForm1_contact-form-submit' type='button' value='Send'/>
-<p class='contact-form-error-message' id='ContactForm1_contact-form-error-message'></p>
-<p class='contact-form-success-message' id='ContactForm1_contact-form-success-message'></p>
-</form>
-</div>
-</div>
-</div></div>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <div class='hidden-widgets' style='display:none!important'>
+  <div class='hidden-widgets section' id='hidden-widgets'><div class='widget ContactForm' data-version='2' id='ContactForm1'>
+  <div class='widget-title'>
+  <h3 class='title'>
+  Contact Form
+  </h3>
+  </div>
+  <div class='contact-form-widget'>
+  <div class='form'>
+  <form name='contact-form'>
+  <input class='contact-form-name' id='ContactForm1_contact-form-name' name='name' placeholder='Name' size='30' type='text' value=''/>
+  <input class='contact-form-email' id='ContactForm1_contact-form-email' name='email' placeholder='Email*' size='30' type='text' value=''/>
+  <textarea class='contact-form-email-message' cols='25' id='ContactForm1_contact-form-email-message' name='email-message' placeholder='Message*' rows='5'></textarea>
+  <input class='contact-form-button contact-form-button-submit' id='ContactForm1_contact-form-submit' type='button' value='Send'/>
+  <p class='contact-form-error-message' id='ContactForm1_contact-form-error-message'></p>
+  <p class='contact-form-success-message' id='ContactForm1_contact-form-success-message'></p>
+  </form>
+  </div>
+  </div>
+  </div></div>
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{asset('/assets/js/main.js')}}"></script>
 <!-- Hosted Plugins -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'></script>

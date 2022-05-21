@@ -1,4 +1,5 @@
 <table class="table" id="render">
+
     <div style="text-align: center; margin:0 auto">
         <h4 >Đã thêm <span style="font-weight: bold; color:red">{{ count(Session::get('cart'))}}</span> sản phẩm vào giỏ hàng</h4>
     </div>

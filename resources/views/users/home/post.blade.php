@@ -139,7 +139,7 @@
             <div class='about-author'>
                 <div class='avatar-container'>
                     <span class='author-avatar' data-image='//2.bp.blogspot.com/-gpkPtHz0gBk/YXK0ULEF5AI/AAAAAAAAAAQ/cV2tPPMJXQsQcKqnO7-BYd1SIAK
-         AWnGzwCK4BGAYYCw/s100-pf/Sora%2BBlogging%2BTips.jpg'></span>
+             AWnGzwCK4BGAYYCw/s100-pf/Sora%2BBlogging%2BTips.jpg'></span>
                 </div>
                 <h3 class='author-name'>
                     <span>Posted by</span><a alt='Sora Blogging Tips'
@@ -174,7 +174,7 @@
             </div>
             <div class='footer'>
                 <div class='comment-form'>
-                    <form method="post" action="{{ route('comment', $post->id) }}">
+                    <form action="{{ route('comment', $post->id) }}">
                         @csrf
                         <header class="flex items-center">
                             <img src="https://i.pravatar.cc/60" alt="">
@@ -199,10 +199,6 @@
                     <div id="comment">
                         @include('users.home.comment')
                     </div>
-                    {{-- <div class="replay"> --}}
-                        {{-- @include('users.home.replay') --}}
-                    {{-- </div> --}}
-
                 </div>
             </div>
 

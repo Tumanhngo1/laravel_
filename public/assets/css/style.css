@@ -449,3 +449,18 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .social a:hover {
   color: #000;
 }
+#animation {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0%   {background-color:red; right:-700px; top:0px;}
+  75%  {background-color:green; right:-500px; top:0px;}
+  100% {background-color:red; right:-700px; top:0px;}
+}
