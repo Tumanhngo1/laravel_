@@ -18,7 +18,7 @@ class PostPolicy
      */
     public function viewAny(User $user)
     {
-        //  
+        //
     }
 
     /**
@@ -28,15 +28,9 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(?User $user, Post $post)
+    public function view(User $user, Post $post)
     {
-        return (
-            $post->status == Post::STATUS_PUBLISHED ||
-            ($user && (
-                $user->id == $post->user_id
-                || $user->hasPermission('review_post')
-            ))
-        );
+        //
     }
 
     /**
@@ -47,7 +41,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $user->hasVerifiedEmail();
+        return $user->hasAccess('post.create');
     }
 
     /**
@@ -59,7 +53,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return ($user->id == $post->user_id || $user->hasPermission('update_post'));
+        // return $user->hasAccess(['post.update']) or $user->id == $post->user_id;
     }
 
     /**
@@ -71,7 +65,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return ($user->id == $post->user_id || $user->hasPermission('delete_post'));
+        //
     }
 
     /**
@@ -83,7 +77,7 @@ class PostPolicy
      */
     public function restore(User $user, Post $post)
     {
-        return ($user->id == $post->user_id || $user->hasPermission('restore_post'));
+        //
     }
 
     /**
@@ -95,6 +89,15 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
-        return ($user->id == $post->user_id || $user->hasPermission('force_delete_post'));
+        //
+    }
+    public function publish(User $user)
+    {
+        // return $user->hasAccess(['post.publish']);
+    }
+
+    public function draft(User $user)
+    {
+        return $user->inRole('editor');
     }
 }

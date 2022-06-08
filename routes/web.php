@@ -31,13 +31,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 // home/user
-Route::get('/',[PostController::class,'index']);
+Route::get('/',[PostController::class,'index'])->name('home');
 Route::get('users/{post}',[PostController::class,'show']);
 Route::get('users/comment/{post}',[PostCommentController::class,'comment'])->name('comment');
 Route::put('users/comment/edit/{post}',[PostCommentController::class,'update'])->name('editComment');
 Route::get('users/comment/delete/{post}',[PostCommentController::class,'delete'])->name('deleteComment');
 Route::get('users/replay/{comment}',[PostCommentController::class,'replay'])->name('replay');
 // Route::post('users/{post:slug}/comments',[PostCommentController::class,'store']);
+//phan quyen
+// Route::get('/drafts', [PostController::class,'drafts'])->name('list_drafts') ->middleware('auth');;
+// Route::get('/edit/{post}',[PostController::class,'edit'])->name('edit_post')->middleware('can:post.update,post');
+// Route::post('/edit/{post}',[PostController::class,'update'])->name('update_post')->middleware('can:post.update,post');
+// Route::get('/create', [PostController::class,'create'])->name('create_post')->middleware('can:post.create');
+// Route::post('/create',[PostController::class,'store'] )->name('store_post')->middleware('can:post.create');
+Route::group(['prefix' => 'posts'], function () {
+    Route::get('/drafts', [PostController::class,'drafts'])
+        ->name('list_drafts')
+        ->middleware('auth');
+    Route::get('/create', [PostController::class,'create'])
+        ->name('create_post')
+        ->middleware('can:post.create');
+    Route::post('/create', [PostController::class,'store'])
+        ->name('store_post')
+        ->middleware('can:post.create');
+    Route::get('/edit/{post}', [PostController::class,'edit'])
+        ->name('edit_post')
+        ->middleware('can:post.update,post');
+    Route::post('/edit/{post}', [PostController::class,'update'])
+        ->name('update_post')
+        ->middleware('can:post.update,post');
+    Route::get('/publish/{post}', [PostController::class,'publish'])
+        ->name('publish_post')
+        ->middleware('can:post.publish');
+    Route::get('delete/{post}',[PostController::class,'destroy'])->name('post.delete');
+});
+
 
 //HOME/PRODCT
 Route::get('products',[UsersProductController::class,'index']);
@@ -61,11 +89,11 @@ Route::get('confirm/{token}/{customer}',[OrderController::class,'confirm'])->nam
 
 
 //auth
-Route::get('register',[RegisterController::class,'create'])->middleware('guest');
+Route::get('register',[RegisterController::class,'create'])->middleware('guest')->name('register');
 Route::post('register',[RegisterController::class,'store'])->middleware('guest');
-Route::get('login',[LoginController::class,'create'])->middleware('guest');
+Route::get('login',[LoginController::class,'create'])->middleware('guest')->name('login');
 Route::post('login',[LoginController::class,'store'])->middleware('guest');
-Route::post('logout',[LoginController::class,'destroy'])->middleware('auth');
+Route::post('logout',[LoginController::class,'destroy'])->middleware('auth')->name('logout');
 
 //reset_password
 Route::get('forget-password', [ForgotPasswordController::class, 'showForget'])->name('forget.password.get');

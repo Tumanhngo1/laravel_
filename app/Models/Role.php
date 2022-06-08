@@ -8,8 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    public function permissions()
+    protected $casts = [
+        'permissions' => 'array',
+    ];
+
+    public function users()
     {
-        return $this->belongsToMany('App\Models\Permission');
+        return $this->belongsToMany(User::class, 'role_users');
     }
+    private function hasPermission(string $permission) : bool
+    {
+        return $this->permissions[$permission] ?? false;
+    }
+
+    public function hasAccess(array $permissions) : bool
+    {
+        foreach ($permissions as $permission) {
+            if ($this->hasPermission($permission))
+                return true;
+        }
+        return false;
+    }
+
+  
 }

@@ -44,6 +44,25 @@
                     @error('confirm-password')
                     <p style="color:red">{{ $message }}</p>
                 @enderror --}}
+                <div class="form-group">
+                    <label for="role" class="col-md-4 control-label">Chức danh</label>
+                    @php
+                    $roles = App\Models\Role::get();
+                    @endphp
+                    <div class="form-group">
+                        <select id="role" class="form-control" name="role" required>
+                        @foreach($roles as $id => $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                        @endforeach
+                        </select>
+
+                        @if ($errors->has('role'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('role') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group mt-3">
                     <button class="btn btn-success" type="submit">submit</button>   
                 </div>

@@ -31,11 +31,15 @@ class Post extends Model
                     =>$query->where('username',$author)
                 ));
     }
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo('App\Models\User');
-    // }
+    public function scopeUnpublished($query)
+    {
+        return $query->where('published', false);
+    }
 
     public function author(){
         return $this->belongsTo(User::class,'user_id');

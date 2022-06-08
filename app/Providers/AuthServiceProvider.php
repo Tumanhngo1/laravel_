@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Model' => 'App\Policies\ModelPolicy',
         //     Comment::class => CommentPolicy::class
         // \App\Models\Post::class => \App\Policies\PostPolicy::class,
         // Post::class => PostPolicy::class
@@ -39,6 +39,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('comment',function( $user, $comment){
             return $user->id == $comment->user_id;
         });
+
+        Gate::resource('post', PostPolicy::class);
+        Gate::define('post.create', 'App\Policies\PostPolicy@create');
+        Gate::define('post.draft', PostPolicy::class . '@draft');
       
     }
 }

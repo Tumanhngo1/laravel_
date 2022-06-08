@@ -31,7 +31,7 @@
           </div>
         <form action="/admin/posts" method="POST" enctype="multipart/form-data">
             @csrf
-            {{-- @method('put') --}}
+           
               <div class="card-body">
                 <div class="form-group">
                   <label for="">Tên danh mục</label>

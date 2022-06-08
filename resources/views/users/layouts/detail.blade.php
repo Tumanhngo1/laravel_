@@ -58,28 +58,45 @@
 @endforeach
 <li><a href='https://youtu.be/elLy6sKB_Po' role='menuitem'>_Video Doc</a></li>
 <li><a href='https://www.templateify.com/2018/09/amalia-beauty-blogger-template.html' role='menuitem'>Download This Template</a></li>
-<li> @auth
+<li>
+  @auth
   @can('admin')
   <li>
     <a class="admin" href="/admin/categories" :active="request()->is('admin/categories')">Admin</a>
-  
+
   </li>
 @endcan
-  <li>
+  {{-- <li>
     <span  class="text-xs font-bold uppercase"> wellcome , {{Auth::user()->name}}</span>
   </li>
-  <li  class='menuitem'>
-      <form action="/logout" method="post">
-      @csrf
-          <button class="btn btn-link btn-sm "  type="submit">Logout</button>
-      </form> 
-  </li>
+<li  class='menuitem'>
+    <form action="/logout" method="post">
+    @csrf
+        <button class="btn btn-link btn-sm " type="submit">Logout</button>
+    </form> 
+</li> --}}
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+      {{ Auth::user()->name }} <span class="caret"></span>
+  </a>
 
- 
-  @else 
-  <a href="/register" class="text-xs font-bold uppercase">Register</a>  
-  <a href="/login" class="ml-3 text-xs font-bold uppercase">login</a>  
-  @endauth
+  <ul class="dropdown-menu" role="menu">
+      <li>
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Đăng xuất </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+      </li>
+      @can('post.draft')
+      <li>
+          <a href="{{ route('list_drafts') }}">Đăng Bài</a>
+      </li>
+      @endcan
+  </ul>
+@else 
+<a href="/login" class="ml-3 text-xs font-bold uppercase">login</a>  
+<a href="/register" class="text-xs font-bold uppercase">Register</a>  
+@endauth
 </li>
 </ul>
 </div></div>
